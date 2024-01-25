@@ -10,7 +10,13 @@ export const publicRoutes = ["/", "/auth/new-verification"];
  * These routes redirect logged in sers to /settings
  * @types {string[]}
  */
-export const authRoutes = ["/auth/login", "/auth/register", "/auth/error"];
+export const authRoutes = [
+  "/auth/login",
+  "/auth/register",
+  "/auth/error",
+  "/auth/reset",
+  "/auth/new-password",
+];
 
 /**
  * The prefix for API authentication routes
