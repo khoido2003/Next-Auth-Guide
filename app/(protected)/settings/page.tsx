@@ -1,22 +1,32 @@
-import { auth, signOut } from "@/auth";
+"use client";
 
-const page = async () => {
-  const session = await auth();
+import { logout } from "@/actions/logout";
+
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { useSession, signIn, signOut } from "next-auth/react";
+
+// import { auth, signOut } from "@/auth";
+
+const SettingPage = () => {
+  // const session = useSession()
+  const user = useCurrentUser();
+
+  const onClick = () => {
+    // logout() //Using server action to logout
+    signOut();
+  };
 
   return (
-    <div>
-      {JSON.stringify(session)}
+    <div className="glassmophism p-10 rounded-xl ">
+      {/* {JSON.stringify(user)} */}
 
-      <form
-        action={async () => {
-          "use server";
-          await signOut();
-        }}
-      >
-        <button type="submit">signout</button>
+      <form>
+        <button type="submit" onClick={onClick}>
+          Sign Out
+        </button>
       </form>
     </div>
   );
 };
 
-export default page;
+export default SettingPage;
